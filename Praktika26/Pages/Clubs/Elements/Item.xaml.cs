@@ -23,6 +23,10 @@ namespace Praktika26.Pages.Clubs.Elements
 
         private void DeleteClub(object sender, RoutedEventArgs e)
         {
+            Classes.UserContext AllUsers = new Classes.UserContext();
+            AllUsers.Users.RemoveRange(AllUsers.Users.Where(x => x.IdClub == Club.Id));
+            AllUsers.SaveChanges();
+
             Main.AllClub.Clubs.Remove(Club);
             Main.AllClub.SaveChanges();
             Main.parent.Children.Remove(this);
